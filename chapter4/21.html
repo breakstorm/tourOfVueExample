@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Example</title>
+</head>
+<body>
+    <div id="app">
+        <button @click="shuffle">shuffle</button>
+        <ul>
+            <li v-for="message in messages"> {{ message }}</li>
+        </ul>
+    </div>
+    <script src="https://unpkg.com/vue"></script>
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                messages: []
+            },
+            methods: {
+                shuffle: function () {
+                    console.time('calcurate time')
+                    var randomIndexValue = 0;
+
+                    // 개선후
+                    // var tempArray = JSON.parse(JSON.stringify(this.messages))
+                    for (var i = 0; i < this.messages.length; i += 1) {
+                        var randomIndex = Math.floor(Math.random() * (i + 1));
+                        randomIndexValue = this.messages[i]
+                        this.messages[randomIndex] = this.messages[i]
+                        this.messages[i] = randomIndexValue
+                    }
+                    Vue.set(this.messages, this.messages)
+                    
+                    // 개전전
+                    // for (var i = 0; i < this.messages.length; i += 1) {
+                    //     var randomIndex = Math.floor(Math.random() * (i + 1));
+                    //     randomIndexValue = this.messages[randomIndex];
+                    //     Vue.set(this.messages, randomIndex, this.messages[i]);
+                    //     Vue.set(this.messages, i, randomIndexValue);
+                    //     console.timeLog('calcurate time')
+                    // }
+
+                    console.timeEnd('calcurate time')
+                    }
+            },
+            mounted: function () {
+                for (var i = 0; i < 100; i += 1) {
+                    this.messages.push('메세지 ' + i);
+                }
+            }
+        })
+    </script>
+</body>
+</html>

@@ -8,14 +8,14 @@
 </head>
 <body>
     <div id="app">
-        <span v-html="message"></span>
+        <span v-show="isShow">보이나요?</span>
     </div>
     <script src="https://unpkg.com/vue"></script>
     <script>
         new Vue({
             el: '#app',
             data: {
-                message: '<div>hel</div><div> world</div>'
+                isShow: true
             },
         })
     </script>

@@ -8,14 +8,23 @@
 </head>
 <body>
     <div id="app">
-        <span v-html="message"></span>
+        <template v-if="soldOut">
+            <h1>품절</h1>
+            <p>대기 버튼을 누르시면...</p>
+            <button>대기</button>
+        </template>
+        <template v-else>
+            <h1>판매중</h1>
+            <p>10,000원</p>
+            <button>구매</button>
+        </template>
     </div>
     <script src="https://unpkg.com/vue"></script>
     <script>
         new Vue({
             el: '#app',
             data: {
-                message: '<div>hel</div><div> world</div>'
+                soldOut: true
             },
         })
     </script>

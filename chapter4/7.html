@@ -8,14 +8,16 @@
 </head>
 <body>
     <div id="app">
-        <span v-html="message"></span>
+        <span v-if="alphabet == 'A'">A 입니다.</span>
+        <span v-else-if="alphabet == 'B'">B 입니다.</span>
+        <span v-else>나머지 입니다.</span>
     </div>
     <script src="https://unpkg.com/vue"></script>
     <script>
         new Vue({
             el: '#app',
             data: {
-                message: '<div>hel</div><div> world</div>'
+                alphabet: 'D'
             },
         })
     </script>

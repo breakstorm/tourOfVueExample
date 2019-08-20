@@ -8,15 +8,15 @@
 </head>
 <body>
     <div id="app">
-        <span v-html="message"></span>
+        <ul>
+            <li v-for="index in 100"> {{ index }}</li>
+        </ul>
     </div>
     <script src="https://unpkg.com/vue"></script>
     <script>
         new Vue({
             el: '#app',
-            data: {
-                message: '<div>hel</div><div> world</div>'
-            },
+            
         })
     </script>
 </body>
